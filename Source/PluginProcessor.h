@@ -9,6 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "KAPGain.h"
 
 //==============================================================================
 /**
@@ -54,6 +55,11 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
 private:
+    
+    /**internal*/
+    void initializeDSP();
+    
+    juce::ScopedPointer<KAPGain> mGain[2];  // depreciated, better to use unique_ptr
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KadenzeAudioPluginAudioProcessor)
 };

@@ -154,7 +154,11 @@ void KadenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& b
     {
         auto* channelData = buffer.getWritePointer (channel);
 
-        // ..do something to the data...
+        mGain[channel]->process(channelData,
+                                0.5,
+                                channelData,
+                                buffer.getNumSamples());
+        
     }
 }
 
@@ -182,6 +186,13 @@ void KadenzeAudioPluginAudioProcessor::setStateInformation (const void* data, in
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
+
+void KadenzeAudioPluginAudioProcessor::initializeDSP(){
+    for (int i =0; i< 2; i++) { // 2 = number of channel, here stereo
+        mGain[i] = new KAPGain();
+    }
+}
+
 
 //==============================================================================
 // This creates new instances of the plugin..
