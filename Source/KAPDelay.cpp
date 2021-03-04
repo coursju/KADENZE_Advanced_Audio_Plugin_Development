@@ -25,7 +25,7 @@ void KAPDelay::setSampleRate(double inSampleRate){
 }
 
 void KAPDelay::reset(){
-    zeromem(mBuffer,  (sizeof(double)) * 2048);
+    zeromem(mBuffer,  (sizeof(double)) * maxBufferDelaySize);
 }
 
 void KAPDelay::process(float* inAudio,
@@ -37,4 +37,18 @@ void KAPDelay::process(float* inAudio,
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
     const float feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
+    
+    for (int i = 0; i < inNumSamplesToRender; i++) {
+        const double delayTimeInSamples = (inTime * mSampleRate);
+        const double sample = getInterpolatedSample(delayTimeInSamples);
+    }
 }
+
+double KAPDelay::getInterpolatedSample(float inDelayTimeInSamples){
+    double readPosition = (double) mDelayIndex - inDelayTimeInSamples;
+    
+    if (readPosition < 0.0f) {
+        readPosition = readPosition + 2048;
+    }
+}
+

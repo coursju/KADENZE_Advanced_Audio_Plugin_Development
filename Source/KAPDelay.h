@@ -10,6 +10,8 @@
 
 #pragma once
 
+static int maxBufferDelaySize = 2048;
+
 class KAPDelay{
 public:
     KAPDelay();
@@ -27,8 +29,12 @@ public:
                  int inNumSamplesToRender);
     
 private:
+    
+    /** internal */
+    double getInterpolatedSample(float inDelayTimeInSamples);
+    
     double mSampleRate;
-    double mBuffer[2048];
+    double mBuffer[maxBufferDelaySize];
     double mFeedbackSample;
     
     int mDelayIndex;
