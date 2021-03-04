@@ -9,8 +9,8 @@
 */
 
 #pragma once
+const static int maxBufferDelaySize = 2048;
 
-static int maxBufferDelaySize = 2048;
 
 class KAPDelay{
 public:
@@ -39,3 +39,4 @@ private:
     
     int mDelayIndex;
 };
+
