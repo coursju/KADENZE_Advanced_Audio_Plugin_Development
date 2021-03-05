@@ -22,6 +22,7 @@ KadenzeAudioPluginAudioProcessor::KadenzeAudioPluginAudioProcessor()
                        )
 #endif
 {
+    initializeDSP();
 }
 
 KadenzeAudioPluginAudioProcessor::~KadenzeAudioPluginAudioProcessor()
@@ -93,14 +94,16 @@ void KadenzeAudioPluginAudioProcessor::changeProgramName (int index, const juce:
 //==============================================================================
 void KadenzeAudioPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    for (int i =0; i< 2; i++) { // 2 = number of channel, here stereo
+        mDelay[i]->setSampleRate(sampleRate);
+    }
 }
 
 void KadenzeAudioPluginAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
+    for (int i =0; i< 2; i++) { // 2 = number of channel, here stereo
+        mDelay[i]->reset();
+    }
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -159,6 +162,13 @@ void KadenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& b
                                 channelData,
                                 buffer.getNumSamples());
         
+        mDelay[channel]->process(channelData,
+                                 0.25,
+                                 0.5,
+                                 0.35,
+                                 channelData,
+                                 buffer.getNumSamples());
+        
     }
 }
 
@@ -190,6 +200,7 @@ void KadenzeAudioPluginAudioProcessor::setStateInformation (const void* data, in
 void KadenzeAudioPluginAudioProcessor::initializeDSP(){
     for (int i =0; i< 2; i++) { // 2 = number of channel, here stereo
         mGain[i] = new KAPGain();
+        mDelay[i] = new KAPDelay();
     }
 }
 

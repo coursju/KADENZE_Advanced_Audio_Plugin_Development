@@ -10,6 +10,7 @@
 
 #include "KAPDelay.h"
 #include "JuceHeader.h"
+#include "KAPAudioHelpers.h"
 
 using namespace juce;
 
@@ -41,6 +42,18 @@ void KAPDelay::process(float* inAudio,
     for (int i = 0; i < inNumSamplesToRender; i++) {
         const double delayTimeInSamples = (inTime * mSampleRate);
         const double sample = getInterpolatedSample(delayTimeInSamples);
+        
+        mBuffer[mDelayIndex] = inAudio[i] + (mFeedbackSample * feedbackMapped);
+        
+        mFeedbackSample = sample;
+        
+        outAudio[i] = (inAudio[i] * dry + sample * wet);
+        
+        mDelayIndex = mDelayIndex + 1;
+        
+        if (mDelayIndex > maxBufferDelaySize) {
+            mDelayIndex = mDelayIndex - maxBufferDelaySize;
+        }
     }
 }
 
@@ -50,5 +63,25 @@ double KAPDelay::getInterpolatedSample(float inDelayTimeInSamples){
     if (readPosition < 0.0f) {
         readPosition = readPosition + 2048;
     }
+    
+    int index_y0 = (int)readPosition -1;
+    
+    if (index_y0 < 0) {
+        index_y0 = index_y0 + maxBufferDelaySize;
+    }
+    
+    int index_y1 = readPosition;
+    
+    if (index_y1 < maxBufferDelaySize) {
+        index_y1 = index_y1 - maxBufferDelaySize;
+    }
+    
+    const float sample_y0 = mBuffer[index_y0];
+    const float sample_y1 = mBuffer[index_y1];
+    const float t = (int)readPosition - readPosition;
+    
+    double outSample = kap_linear_interp(sample_y0, sample_y1, t);
+    
+    return  outSample;;
 }
 
