@@ -9,8 +9,7 @@
 */
 
 #pragma once
-const static int maxBufferDelaySize = 19200; //2048
-
+#include "KAPAudioHelpers.h"
 
 class KAPDelay{
 public:
