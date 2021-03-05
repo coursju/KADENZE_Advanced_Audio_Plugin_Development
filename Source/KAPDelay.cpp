@@ -14,8 +14,11 @@
 
 using namespace juce;
 
-KAPDelay::KAPDelay(): mSampleRate(-1){
-    
+KAPDelay::KAPDelay(): mSampleRate(-1),
+                    mFeedbackSample(0.0),
+                    mDelayIndex(0)
+{
+    reset();
 }
 KAPDelay::~KAPDelay(){
     
@@ -35,33 +38,37 @@ void KAPDelay::process(float* inAudio,
                        float inWetDry,
                        float* outAudio,
                        int inNumSamplesToRender){
+    
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
     const float feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
     
     for (int i = 0; i < inNumSamplesToRender; i++) {
-        const double delayTimeInSamples = (inTime * mSampleRate);
+        
+        const float delayTimeInSamples = (inTime * mSampleRate); //changed from double to float
         const double sample = getInterpolatedSample(delayTimeInSamples);
-        
+
+
         mBuffer[mDelayIndex] = inAudio[i] + (mFeedbackSample * feedbackMapped);
-        
         mFeedbackSample = sample;
-        
-        outAudio[i] = (inAudio[i] * dry + sample * wet);
-        
+
+
+        outAudio[i] = inAudio[i] * dry + sample * wet;
+
         mDelayIndex = mDelayIndex + 1;
-        
-        if (mDelayIndex > maxBufferDelaySize) {
+
+        if (mDelayIndex >= maxBufferDelaySize) {  // was just >
             mDelayIndex = mDelayIndex - maxBufferDelaySize;
         }
     }
 }
 
 double KAPDelay::getInterpolatedSample(float inDelayTimeInSamples){
+    
     double readPosition = (double) mDelayIndex - inDelayTimeInSamples;
     
     if (readPosition < 0.0f) {
-        readPosition = readPosition + 2048;
+        readPosition = readPosition + maxBufferDelaySize;
     }
     
     int index_y0 = (int)readPosition -1;
@@ -72,13 +79,13 @@ double KAPDelay::getInterpolatedSample(float inDelayTimeInSamples){
     
     int index_y1 = readPosition;
     
-    if (index_y1 < maxBufferDelaySize) {
+    if (index_y1 >= maxBufferDelaySize) { // was just >
         index_y1 = index_y1 - maxBufferDelaySize;
     }
     
     const float sample_y0 = mBuffer[index_y0];
     const float sample_y1 = mBuffer[index_y1];
-    const float t = (int)readPosition - readPosition;
+    const float t = readPosition - (int)readPosition;
     
     double outSample = kap_linear_interp(sample_y0, sample_y1, t);
     

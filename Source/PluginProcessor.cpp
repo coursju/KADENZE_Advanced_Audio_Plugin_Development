@@ -158,14 +158,14 @@ void KadenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& b
         auto* channelData = buffer.getWritePointer (channel);
 
         mGain[channel]->process(channelData,
-                                0.5,
+                                0.5f,
                                 channelData,
                                 buffer.getNumSamples());
         
         mDelay[channel]->process(channelData,
-                                 0.25,
-                                 0.5,
-                                 0.35,
+                                 0.25f,
+                                 0.5f,
+                                 0.35f,
                                  channelData,
                                  buffer.getNumSamples());
         
