@@ -154,8 +154,10 @@ void KadenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& b
                                 channelData,
                                 buffer.getNumSamples());
         
-        mLfo[channel]->process(0.25,
-                               0.5,
+        float rate = (channel == 0)? 0.0f : 0.25f;
+        
+        mLfo[channel]->process(rate, //0.25f,
+                               0.5f,
                                buffer.getNumSamples());
         
         mDelay[channel]->process(channelData,

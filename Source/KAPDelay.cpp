@@ -16,6 +16,7 @@ using namespace juce;
 
 KAPDelay::KAPDelay(): mSampleRate(-1),
                     mFeedbackSample(0.0),
+                    mTimeSmoothed(0),
                     mDelayIndex(0)
 {
     reset();
@@ -29,6 +30,7 @@ void KAPDelay::setSampleRate(double inSampleRate){
 }
 
 void KAPDelay::reset(){
+    mTimeSmoothed = 0.0f;
     zeromem(mBuffer,  (sizeof(double)) * maxBufferDelaySize);
 }
 
@@ -45,9 +47,13 @@ void KAPDelay::process(float* inAudio,
     const float feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
     
     for (int i = 0; i < inNumSamplesToRender; i++) {
+
+        const float delayTimeModulation = (inTime + (0.02 * inModulationBuffer[i]));
         
-        const float delayTimeModulation = (0.003 + (0.02 * inModulationBuffer[i]));
-        const float delayTimeInSamples = ((inTime * delayTimeModulation) * mSampleRate); 
+        mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * ( mTimeSmoothed -  delayTimeModulation);
+        
+        const double delayTimeInSamples = ( mTimeSmoothed * mSampleRate);
+        
         const double sample = getInterpolatedSample(delayTimeInSamples);
 
 
