@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "KAPGain.h"
 #include "KAPDelay.h"
+#include "KAPLfo.h"
 
 //==============================================================================
 /**
@@ -62,6 +63,7 @@ private:
     
     juce::ScopedPointer<KAPGain> mGain[2];  // depreciated, better to use unique_ptr
     juce::ScopedPointer<KAPDelay> mDelay[2];
+    juce::ScopedPointer<KAPLfo> mLfo[2];
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KadenzeAudioPluginAudioProcessor)
 };
