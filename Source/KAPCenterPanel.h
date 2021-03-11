@@ -9,3 +9,18 @@
 */
 
 #pragma once
+
+#include "KAPPanelBase.h"
+#include "KAPCenterPanelMenuBar.h"
+
+class KAPCenterPanel
+: public KAPPanelBase
+{
+public:
+    KAPCenterPanel(KadenzeAudioPluginAudioProcessor* inProcessor);
+    ~KAPCenterPanel();
+    
+private:
+    ScopedPointer<KAPCenterPanelMenuBar> mMenuBar;
+    
+};
