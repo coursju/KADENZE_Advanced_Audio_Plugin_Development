@@ -673,6 +673,13 @@
 			path = System/Library/Frameworks/IOKit.framework;
 			sourceTree = SDKROOT;
 		};
+		DF50F148CADDFCE3D3871F29 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = KAPInterfaceDefines.h;
+			path = ../../Source/KAPInterfaceDefines.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		E56543D7AD3EFEEB045B0653 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -768,6 +775,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB91CADB070A0AA524D6670,
+				DF50F148CADDFCE3D3871F29,
 			);
 			name = Helpers;
 			sourceTree = "<group>";

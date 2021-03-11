@@ -30,6 +30,8 @@
     <GROUP id="{7C5F5506-0FDC-3F8C-9C0D-95DF439A95AE}" name="Helpers">
       <FILE id="X2dnNN" name="KAPAudioHelpers.h" compile="0" resource="0"
             file="Source/KAPAudioHelpers.h"/>
+      <FILE id="CXeM9L" name="KAPInterfaceDefines.h" compile="0" resource="0"
+            file="Source/KAPInterfaceDefines.h"/>
     </GROUP>
     <GROUP id="{7297C515-CA23-76EE-D5AC-9837546C4673}" name="DSP">
       <FILE id="pa0tKy" name="KAPDelay.cpp" compile="1" resource="0" file="Source/KAPDelay.cpp"/>
