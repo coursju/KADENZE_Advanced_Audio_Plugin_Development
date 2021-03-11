@@ -11,10 +11,12 @@
 #pragma once
 #include "JuceHeader.h"
 #include "PluginProcessor.h"
+#include "KAPInterfaceDefines.h"
 
 using namespace juce;
 
 class KAPPanelBase: public Component{
+    
 public:
     KAPPanelBase(KadenzeAudioPluginAudioProcessor* inProcessor);
     ~KAPPanelBase();
