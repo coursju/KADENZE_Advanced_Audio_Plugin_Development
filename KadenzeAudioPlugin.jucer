@@ -4,6 +4,29 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1">
   <MAINGROUP id="jTXAKs" name="KadenzeAudioPlugin">
+    <GROUP id="{4B6899BB-DB2C-35B7-11F9-FEE2131460A3}" name="Panels">
+      <FILE id="C2CjAb" name="KAPCenterPanel.cpp" compile="1" resource="0"
+            file="Source/KAPCenterPanel.cpp"/>
+      <FILE id="DGGkJ5" name="KAPCenterPanel.h" compile="0" resource="0"
+            file="Source/KAPCenterPanel.h"/>
+      <FILE id="wwGvF0" name="KAPCenterPanelMenuBar.cpp" compile="1" resource="0"
+            file="Source/KAPCenterPanelMenuBar.cpp"/>
+      <FILE id="SeAPra" name="KAPCenterPanelMenuBar.h" compile="0" resource="0"
+            file="Source/KAPCenterPanelMenuBar.h"/>
+      <FILE id="ck1IQT" name="KAPFxPanel.cpp" compile="1" resource="0" file="Source/KAPFxPanel.cpp"/>
+      <FILE id="A8o1TB" name="KAPFxPanel.h" compile="0" resource="0" file="Source/KAPFxPanel.h"/>
+      <FILE id="WEekU9" name="KAPGainPanel.cpp" compile="1" resource="0"
+            file="Source/KAPGainPanel.cpp"/>
+      <FILE id="k1S2aC" name="KAPGainPanel.h" compile="0" resource="0" file="Source/KAPGainPanel.h"/>
+      <FILE id="wefOOW" name="KAPMainPanel.cpp" compile="1" resource="0"
+            file="Source/KAPMainPanel.cpp"/>
+      <FILE id="Q9n5KF" name="KAPMainPanel.h" compile="0" resource="0" file="Source/KAPMainPanel.h"/>
+      <FILE id="fXJpa9" name="KAPPanelBase.cpp" compile="1" resource="0"
+            file="Source/KAPPanelBase.cpp"/>
+      <FILE id="TIiZ8D" name="KAPPanelBase.h" compile="0" resource="0" file="Source/KAPPanelBase.h"/>
+      <FILE id="itHyvp" name="KAPTopPanel.cpp" compile="1" resource="0" file="Source/KAPTopPanel.cpp"/>
+      <FILE id="AqDRl5" name="KAPTopPanel.h" compile="0" resource="0" file="Source/KAPTopPanel.h"/>
+    </GROUP>
     <GROUP id="{7C5F5506-0FDC-3F8C-9C0D-95DF439A95AE}" name="Helpers">
       <FILE id="X2dnNN" name="KAPAudioHelpers.h" compile="0" resource="0"
             file="Source/KAPAudioHelpers.h"/>
