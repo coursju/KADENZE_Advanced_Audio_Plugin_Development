@@ -19,6 +19,10 @@ KAPCenterPanel::KAPCenterPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
     mMenuBar = new KAPCenterPanelMenuBar(inProcessor);
     mMenuBar->setTopLeftPosition(0, 0);
     addAndMakeVisible(mMenuBar);
+    
+    mFxPanel = new KAPFxPanel(inProcessor);
+    mFxPanel->setTopLeftPosition(0, CENTER_PANEL_MENU_BAR_HEIGHT);
+    addAndMakeVisible(mFxPanel);
 }
 KAPCenterPanel::~KAPCenterPanel()
 {}
