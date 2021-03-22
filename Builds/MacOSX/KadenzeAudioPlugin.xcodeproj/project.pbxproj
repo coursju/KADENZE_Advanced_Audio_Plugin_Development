@@ -498,6 +498,13 @@
 			path = ../../Source/KAPMainPanel.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
+		9C67F0A7A79EE56BC45A025C = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = KAPParameters.h;
+			path = ../../Source/KAPParameters.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		9CB5DE74E53538C66A4484CB = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -776,6 +783,7 @@
 			children = (
 				ABB91CADB070A0AA524D6670,
 				DF50F148CADDFCE3D3871F29,
+				9C67F0A7A79EE56BC45A025C,
 			);
 			name = Helpers;
 			sourceTree = "<group>";

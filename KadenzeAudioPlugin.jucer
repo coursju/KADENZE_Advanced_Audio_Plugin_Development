@@ -32,6 +32,7 @@
             file="Source/KAPAudioHelpers.h"/>
       <FILE id="CXeM9L" name="KAPInterfaceDefines.h" compile="0" resource="0"
             file="Source/KAPInterfaceDefines.h"/>
+      <FILE id="RafNhb" name="KAPParameters.h" compile="0" resource="0" file="Source/KAPParameters.h"/>
     </GROUP>
     <GROUP id="{7297C515-CA23-76EE-D5AC-9837546C4673}" name="DSP">
       <FILE id="pa0tKy" name="KAPDelay.cpp" compile="1" resource="0" file="Source/KAPDelay.cpp"/>

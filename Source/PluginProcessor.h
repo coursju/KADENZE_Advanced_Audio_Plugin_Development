@@ -55,11 +55,16 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    juce::AudioProcessorValueTreeState parameters;
 
 private:
     
     /**internal*/
     void initializeDSP();
+    
+    /**internal*/
+    void initializeParameters();
     
     juce::ScopedPointer<KAPGain> mGain[2];  // depreciated, better to use unique_ptr
     juce::ScopedPointer<KAPDelay> mDelay[2];
