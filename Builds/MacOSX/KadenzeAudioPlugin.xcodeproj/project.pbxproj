@@ -77,6 +77,14 @@
 			isa = PBXBuildFile;
 			fileRef = ACAFD9AC10F8CB7159222475;
 		};
+		31E7146338E09C016DECD559 = {
+			isa = PBXBuildFile;
+			fileRef = 7EE0432650C8F205DFD3422E;
+		};
+		4B0A459879786662624F67A6 = {
+			isa = PBXBuildFile;
+			fileRef = CBE2F0780D3762CB38BA9D3E;
+		};
 		B408CEA885AD5F661EE7958A = {
 			isa = PBXBuildFile;
 			fileRef = 282A685FCC8E8C479066B2EE;
@@ -223,6 +231,13 @@
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_graphics.mm";
 			path = "../../JuceLibraryCode/include_juce_graphics.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		12FFCA3E2AB0CA08105080B4 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = KAPParameterSlider.h;
+			path = ../../Source/KAPParameterSlider.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		16B8C0C8C72DAC402552147C = {
@@ -428,6 +443,13 @@
 			path = System/Library/Frameworks/Carbon.framework;
 			sourceTree = SDKROOT;
 		};
+		7EE0432650C8F205DFD3422E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = KAPParameterComboBox.cpp;
+			path = ../../Source/KAPParameterComboBox.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		8235C621F658AA1095FECE47 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -624,6 +646,13 @@
 			path = System/Library/Frameworks/CoreAudio.framework;
 			sourceTree = SDKROOT;
 		};
+		CBE2F0780D3762CB38BA9D3E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = KAPParameterSlider.cpp;
+			path = ../../Source/KAPParameterSlider.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		CCE6040D08070265E2806A96 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -722,6 +751,13 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST3.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
+		F453D960EEAB8CED79688B4E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = KAPParameterComboBox.h;
+			path = ../../Source/KAPParameterComboBox.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		F70DD3321425ACF7CBF408DE = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -756,6 +792,17 @@
 			name = "juce_gui_extra";
 			path = "/Applications/JUCE/modules/juce_gui_extra";
 			sourceTree = "<absolute>";
+		};
+		65AA63E8857698D06279DCB8 = {
+			isa = PBXGroup;
+			children = (
+				7EE0432650C8F205DFD3422E,
+				F453D960EEAB8CED79688B4E,
+				CBE2F0780D3762CB38BA9D3E,
+				12FFCA3E2AB0CA08105080B4,
+			);
+			name = "Parameter Control";
+			sourceTree = "<group>";
 		};
 		350A6A51FF1EB52BCB3A8875 = {
 			isa = PBXGroup;
@@ -815,6 +862,7 @@
 		E9AB51B547BDF8E3C690A231 = {
 			isa = PBXGroup;
 			children = (
+				65AA63E8857698D06279DCB8,
 				350A6A51FF1EB52BCB3A8875,
 				8A5493279056140234C61142,
 				0974BA9F84C62BAE28C62FDE,
@@ -2230,6 +2278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E7146338E09C016DECD559,
+				4B0A459879786662624F67A6,
 				B408CEA885AD5F661EE7958A,
 				E6BCC93F450BE8F802674210,
 				4EDFBD058BB89FDB3440058B,
