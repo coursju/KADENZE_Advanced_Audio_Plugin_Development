@@ -66,7 +66,9 @@ private:
     /**internal*/
     void initializeParameters();
     
-    juce::ScopedPointer<KAPGain> mGain[2];  // depreciated, better to use unique_ptr
+    juce::ScopedPointer<KAPGain> mInputGain[2];  // depreciated, better to use unique_ptr
+    juce::ScopedPointer<KAPGain> mOutputGain[2];  // depreciated, better to use unique_ptr
+
     juce::ScopedPointer<KAPDelay> mDelay[2];
     juce::ScopedPointer<KAPLfo> mLfo[2];
     //==============================================================================
