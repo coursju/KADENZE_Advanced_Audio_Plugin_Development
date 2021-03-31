@@ -32,5 +32,5 @@ public:
 private:
     
     KAPFxPanelStyle mStyle;
-    OwnedArray<KAPParameterSlider> mSlider;
+    OwnedArray<KAPParameterSlider> mSliders;
 };

@@ -98,6 +98,7 @@
 		2C738E6463AE29AFE42678A7 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 		303120DCF4B7480804823975 /* KAPGainPanel.h */ /* KAPGainPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KAPGainPanel.h; path = ../../Source/KAPGainPanel.h; sourceTree = SOURCE_ROOT; };
 		3304067FA0212ADB10201EE4 /* KAPDelay.cpp */ /* KAPDelay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KAPDelay.cpp; path = ../../Source/KAPDelay.cpp; sourceTree = SOURCE_ROOT; };
+		34B85A2891B76B595E21A108 /* KAPHelperFunctions.h */ /* KAPHelperFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KAPHelperFunctions.h; path = ../../Source/KAPHelperFunctions.h; sourceTree = SOURCE_ROOT; };
 		35152F49ADAB9A4F0D96770B /* Info-Standalone_Plugin.plist */ /* Info-Standalone_Plugin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Standalone_Plugin.plist"; path = "Info-Standalone_Plugin.plist"; sourceTree = SOURCE_ROOT; };
 		414557325B089D9D84BF1F84 /* KAPCenterPanel.h */ /* KAPCenterPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KAPCenterPanel.h; path = ../../Source/KAPCenterPanel.h; sourceTree = SOURCE_ROOT; };
 		51171FF9999026591A3265A3 /* include_juce_audio_formats.mm */ /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
@@ -337,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB91CADB070A0AA524D6670,
+				34B85A2891B76B595E21A108,
 				DF50F148CADDFCE3D3871F29,
 				9C67F0A7A79EE56BC45A025C,
 			);
