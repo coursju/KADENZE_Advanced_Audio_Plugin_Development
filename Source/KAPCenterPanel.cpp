@@ -23,6 +23,10 @@ KAPCenterPanel::KAPCenterPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
     mFxPanel = new KAPFxPanel(inProcessor);
     mFxPanel->setTopLeftPosition(0, CENTER_PANEL_MENU_BAR_HEIGHT);
     addAndMakeVisible(mFxPanel);
+    
+    mMenuBar->addFxTypeComboBoxListener(mFxPanel);
 }
 KAPCenterPanel::~KAPCenterPanel()
-{}
+{
+    mMenuBar->removeFxTypeComboBoxListener(mFxPanel);
+}

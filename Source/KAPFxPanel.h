@@ -20,8 +20,7 @@ enum KAPFxPanelStyle
 };
 
 class KAPFxPanel
-: public KAPPanelBase,
-  public ComboBox::Listener
+: public KAPPanelBase, public ComboBox::Listener
 {
 public:
     KAPFxPanel(KadenzeAudioPluginAudioProcessor* inProcessor);
