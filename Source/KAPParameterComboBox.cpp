@@ -10,7 +10,7 @@
 
 #include "KAPParameterComboBox.h"
 
-KAPParameterComboBox::KAPParameterComboBox(AudioProcessorValueTreeState& stateToControl,                                                   const String& parameterID)
+KAPParameterComboBox::KAPParameterComboBox(AudioProcessorValueTreeState& stateToControl,                                              const String& parameterID)
 : ComboBox(parameterID)
 {
     mAttachment =

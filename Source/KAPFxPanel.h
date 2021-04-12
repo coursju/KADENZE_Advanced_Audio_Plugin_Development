@@ -12,6 +12,8 @@
 #include "KAPPanelBase.h"
 #include "KAPParameterSlider.h"
 
+using namespace juce;
+
 enum KAPFxPanelStyle
 {
     kKAPFxPanelStyle_Delay,

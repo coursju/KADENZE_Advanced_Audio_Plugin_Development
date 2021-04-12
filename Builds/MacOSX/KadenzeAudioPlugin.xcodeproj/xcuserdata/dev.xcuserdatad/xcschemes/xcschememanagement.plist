@@ -12,17 +12,17 @@
 		<key>KadenzeAudioPlugin - All.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>2</integer>
 		</dict>
 		<key>KadenzeAudioPlugin - Shared Code.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>KadenzeAudioPlugin - Standalone Plugin.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 		<key>KadenzeAudioPlugin - VST3.xcscheme_^#shared#^_</key>
 		<dict>
@@ -33,6 +33,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1614E27BB83D050BFD1012D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79908EC454C7A12412552F14</key>
 		<dict>
 			<key>primary</key>
 			<true/>

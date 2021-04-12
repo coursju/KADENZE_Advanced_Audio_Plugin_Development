@@ -42,8 +42,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "com.ableton.live"
-         FilePath = "/Applications/Ableton Live 11 Trial.app">
+         FilePath = "/Applications/JUCE/extras/AudioPluginHost/Builds/MacOSX/build/Debug/AudioPluginHost.app">
       </PathRunnable>
    </LaunchAction>
    <ProfileAction
