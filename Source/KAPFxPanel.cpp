@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    KAPFxPanel.cpp
+ KAPFxPanel.cpp
     Created: 11 Mar 2021 3:33:20pm
     Author:  dev
 
@@ -20,6 +20,8 @@ KAPFxPanel::KAPFxPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
     
     const int currentStyle = (int)mProcessor->getParameter(kParameter_DelayType);
     setFxPanelStyle((KAPFxPanelStyle)currentStyle);
+    DBG("KAPFxPanel : constructor");
+
 }
 KAPFxPanel::~KAPFxPanel()
 {
@@ -61,7 +63,9 @@ void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
 
     switch (mStyle) {
         case kKAPFxPanelStyle_Delay:{
-             
+            
+            DBG("KAPFxPanel : kKAPFxPanelStyle_Delay");
+
             KAPParameterSlider* time =
             new KAPParameterSlider( mProcessor->parameters, KAPParameterID[kParameter_DelayTime]);
             time->setBounds(x, y, slider_size, slider_size);
@@ -73,7 +77,7 @@ void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
             new KAPParameterSlider( mProcessor->parameters, KAPParameterID[kParameter_DelayFeedback]);
             feedback->setBounds(x, y, slider_size, slider_size);
             addAndMakeVisible(feedback);
-            mSliders.add(time);
+            mSliders.add(feedback);
             x = x + (slider_size * 2);
             
             KAPParameterSlider* wetdry =
@@ -85,7 +89,8 @@ void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
         }break;
             
         case kKAPFxPanelStyle_Chorus:{
-            
+            DBG("KAPFxPanel : kKAPFxPanelStyle_Chorus");
+
             KAPParameterSlider* rate =
             new KAPParameterSlider( mProcessor->parameters, KAPParameterID[kParameter_ModulationRate]);
             rate->setBounds(x, y, slider_size, slider_size);
@@ -120,6 +125,8 @@ void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
 void KAPFxPanel::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 {
     KAPFxPanelStyle style = (KAPFxPanelStyle)comboBoxThatHasChanged->getSelectedItemIndex();
-    
     setFxPanelStyle(style);
+    DBG("KAPFxPanel : comboBoxChanged "<<comboBoxThatHasChanged->getSelectedItemIndex());
+//    std::cout <<comboBoxThatHasChanged->getSelectedItemIndex()<< std::endl;
+//    DBG(comboBoxThatHasChanged->getSelectedItemIndex());
 }

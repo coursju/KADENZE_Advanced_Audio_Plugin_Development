@@ -35,6 +35,7 @@ KAPCenterPanelMenuBar::~KAPCenterPanelMenuBar()
 
 void KAPCenterPanelMenuBar::addFxTypeComboBoxListener(ComboBox::Listener* inListener)
 {
+    DBG("KAPCenterPanelMenuBar : into addFxTypeComboBoxListener");
     mFxTypeComboBox->addListener(inListener);
 }
 

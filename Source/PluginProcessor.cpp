@@ -25,7 +25,7 @@ parameters(*this, nullptr)
 #endif
 {
     initializeParameters();
-
+    DBG("PluginProcessor constructor");
     initializeDSP();
 }
 
@@ -168,6 +168,7 @@ void KadenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& b
                                  getParameter(kParameter_DelayTime),
                                  getParameter(kParameter_DelayFeedback),
                                  getParameter(kParameter_DelayWetDry),
+                                 getParameter(kParameter_DelayType),
                                  mLfo[channel]->getBuffer(),
                                  channelData,
                                  buffer.getNumSamples());
