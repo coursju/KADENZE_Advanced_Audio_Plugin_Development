@@ -158,9 +158,9 @@ void KadenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& b
                                 channelData,
                                 buffer.getNumSamples());
         
-        float rate = (channel == 0)? 0.0f : getParameter(kParameter_ModulationRate);
+        float rate = (channel == 0)? getParameter(kParameter_ModulationRate) : 0.0f ;
         
-        mLfo[channel]->process(rate, //0.25f,
+        mLfo[channel]->process(rate,
                                getParameter(kParameter_ModulationDeph),
                                buffer.getNumSamples());
         
@@ -179,7 +179,6 @@ void KadenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& b
                                 buffer.getNumSamples());
         
     }
-
 }
 
 //==============================================================================

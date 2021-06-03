@@ -22,9 +22,9 @@ KAPPanelBase::~KAPPanelBase()
 
 void KAPPanelBase::paint (Graphics& g)
 {
-    g.setColour(Colours::whitesmoke);
+    g.setColour(Colours::lightcoral);
     g.fillAll();
     
     g.setColour(Colours::black);
-    g.drawRect( 0, 0, getWidth(), getHeight());
+    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 20.0, 0.5);
 }

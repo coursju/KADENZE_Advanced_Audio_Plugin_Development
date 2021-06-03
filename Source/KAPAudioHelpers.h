@@ -19,6 +19,12 @@ const static double k2PI = 6.28318530718;
 const static int maxBufferDelaySize = 1920000; //19200; //2048
 
 
-inline float kap_linear_interp(float v0, float v1, float t){
+inline float kap_linear_interp(float v0, float v1, float t)
+{
     return (1-t) * v0 + t * v1;
+}
+
+inline float tanh_clip(float x)
+{
+    return x * ( 27 + x * x ) / ( 27 + 9 * x * x );
 }
