@@ -199,15 +199,26 @@ juce::AudioProcessorEditor* KadenzeAudioPluginAudioProcessor::createEditor()
 //==============================================================================
 void KadenzeAudioPluginAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    XmlElement preset("KAP_StateInfo");
+    
+    XmlElement* presetBody = new XmlElement("KAP_Preset");
+    
+    mPresetManager->getXmlForPreset(presetBody);
+    
+    preset.addChildElement(presetBody);
+    
+    copyXmlToBinary(preset, destData);
 }
 
 void KadenzeAudioPluginAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+    std::unique_ptr<XmlElement> xmlState = getXmlFromBinary(data, sizeInBytes); //added unique_ptr instead of the lesson
+    
+    if (xmlState) {
+        forEachXmlChildElement(*xmlState, subChild);
+    } else {
+        jassertfalse;
+    }
 }
 
 void KadenzeAudioPluginAudioProcessor::initializeDSP(){
