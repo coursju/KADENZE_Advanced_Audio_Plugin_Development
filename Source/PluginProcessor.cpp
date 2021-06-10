@@ -25,8 +25,12 @@ parameters(*this, nullptr)
 #endif
 {
     initializeParameters();
+    
     DBG("PluginProcessor constructor");
+    
     initializeDSP();
+    
+    mPresetManager = new KAPPresetManager(this);
 }
 
 KadenzeAudioPluginAudioProcessor::~KadenzeAudioPluginAudioProcessor()

@@ -46,6 +46,7 @@ void KAPDelay::process(float* inAudio,
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
     const float feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
+    /**For session 2 coursework*/
 //    const float feedbackMapped =
 //    ( inType == kKAPDelayType_Delay) ? jmap(inFeedback, 0.0f, 1.0f, 0.0f, 1.2f) : jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
 
@@ -62,7 +63,7 @@ void KAPDelay::process(float* inAudio,
         
         const double sample = getInterpolatedSample(delayTimeInSamples);
 
-
+        /**For session 2 coursework*/
 //        mBuffer[mDelayIndex] = tanh_clip(inAudio[i] + (mFeedbackSample * feedbackMapped));
         mBuffer[mDelayIndex] = inAudio[i] + (mFeedbackSample * feedbackMapped);
 
@@ -73,7 +74,7 @@ void KAPDelay::process(float* inAudio,
 
         mDelayIndex = mDelayIndex + 1;
 
-        if (mDelayIndex >= maxBufferDelaySize) {  // was just >
+        if (mDelayIndex > maxBufferDelaySize) {  // change bug in lesson from >= to >
             mDelayIndex = mDelayIndex - maxBufferDelaySize;
         }
     }
