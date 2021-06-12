@@ -10,10 +10,28 @@
 
 #include "KAPPresetManager.h"
 
+#if JUCE_WINDOWS
+    static const String directorySeparator = "\\";
+#elif JUCE_MAC
+    static const String directorySeparator = "/";
+//#elif JUCE_LINUX
+#endif
+
 KAPPresetManager::KAPPresetManager(AudioProcessor* inProcessor)
-:mProcessor(inProcessor)
+: mCurrentPresetIsSaved(false),
+  mCurrentPresetName("Untitled"),
+  mProcessor(inProcessor)
 {
+    const String pluginName = (String) mProcessor->getName();
     
+    mPresetDirectory =
+    (File::getSpecialLocation(File::userDesktopDirectory)).getFullPathName()+pluginName;
+    
+    if (!File(mPresetDirectory).exists()) {
+        File(mPresetDirectory).createDirectory();
+    }
+    
+    storeLocalPreset();
 }
 KAPPresetManager::~KAPPresetManager()
 {
@@ -43,5 +61,99 @@ void KAPPresetManager::loadXmlForPreset(XmlElement* inElement)
                 mProcessor->setParameterNotifyingHost(j, value);
             }
         }
+    }
+}
+
+int KAPPresetManager::getNumberOfPresets()
+{
+    return mLocalPresets.size();
+}
+
+String KAPPresetManager::getPresetName(int inPresetIndex)
+{
+    return mLocalPresets[inPresetIndex].getFileNameWithoutExtension();
+}
+
+void KAPPresetManager::createNewPreset()
+{
+    const int numParameters = mProcessor->getNumParameters();
+    
+    for (int i =0; i < numParameters; i++) {
+        mProcessor->setParameterNotifyingHost(i, mProcessor->getParameterDefaultValue(i));
+    }
+    
+    mCurrentPresetIsSaved = false;
+    mCurrentPresetName = "Untitled";
+}
+
+void KAPPresetManager::savePreset()
+{
+    MemoryBlock destinationData;
+    mProcessor->getStateInformation(destinationData);
+    
+    mCurrentlyLoadedPreset.deleteFile();
+    
+    mCurrentlyLoadedPreset.appendData(destinationData.getData(),
+                                      destinationData.getSize());
+    
+    mCurrentPresetIsSaved = true;
+}
+
+void KAPPresetManager::saveAsPreset(String inPresetName)
+{
+    File presetFile = File(mPresetDirectory + directorySeparator + inPresetName);
+    
+    if (!presetFile.exists()) {
+        presetFile.create();
+    } else {
+        presetFile.deleteFile();
+    }
+    
+    MemoryBlock destinationData;
+    mProcessor->getStateInformation(destinationData);
+    
+    presetFile.appendData(destinationData.getData(),
+                          destinationData.getSize());
+    
+    mCurrentPresetIsSaved = true;
+    mCurrentPresetName = inPresetName;
+    
+    storeLocalPreset();
+}
+
+void KAPPresetManager::loadPreset(int inPresetIndex)
+{
+    mCurrentlyLoadedPreset = mLocalPresets[inPresetIndex];
+    
+    MemoryBlock presetBinary;
+    
+    if (mCurrentlyLoadedPreset.loadFileAsData(presetBinary)) {
+        mCurrentPresetIsSaved = true;
+        mCurrentPresetName = getPresetName(inPresetIndex);
+        mProcessor->setStateInformation(presetBinary.getData(),
+                                        (int)presetBinary.getSize());
+    }
+}
+
+bool KAPPresetManager::getIsCurrentPresetSaved()
+{
+    return mCurrentPresetIsSaved;
+}
+
+String KAPPresetManager::getCurrentPresetName()
+{
+    return mCurrentPresetName;
+}
+
+void KAPPresetManager::storeLocalPreset()
+{
+    mLocalPresets.clear();
+    
+    for (DirectoryIterator di (File(mPresetDirectory),
+                               false,
+                               "*"+(String)PRESET_FILE_EXTENTION,
+                               File::TypesOfFileToFind::findFiles); di.next();) {
+        File preset = di.getFile();
+        mLocalPresets.add(preset);
     }
 }

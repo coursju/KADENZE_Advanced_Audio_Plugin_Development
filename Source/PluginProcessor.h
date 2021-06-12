@@ -58,6 +58,11 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     juce::AudioProcessorValueTreeState parameters;
+    
+    KAPPresetManager* getPresetManager()
+    {
+        return mPresetManager;
+    }
 
 private:
     
