@@ -25,7 +25,7 @@ KAPPresetManager::KAPPresetManager(AudioProcessor* inProcessor)
     const String pluginName = (String) mProcessor->getName();
     
     mPresetDirectory =
-    (File::getSpecialLocation(File::userDesktopDirectory)).getFullPathName()+pluginName;
+    (File::getSpecialLocation(File::userDesktopDirectory)).getFullPathName()+directorySeparator+pluginName;
     
     if (!File(mPresetDirectory).exists()) {
         File(mPresetDirectory).createDirectory();
@@ -101,7 +101,7 @@ void KAPPresetManager::savePreset()
 
 void KAPPresetManager::saveAsPreset(String inPresetName)
 {
-    File presetFile = File(mPresetDirectory + directorySeparator + inPresetName);
+    File presetFile = File(mPresetDirectory + directorySeparator + inPresetName + PRESET_FILE_EXTENTION);
     
     if (!presetFile.exists()) {
         presetFile.create();
