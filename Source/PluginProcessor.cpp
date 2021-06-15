@@ -215,7 +215,9 @@ void KadenzeAudioPluginAudioProcessor::setStateInformation (const void* data, in
     std::unique_ptr<XmlElement> xmlState = getXmlFromBinary(data, sizeInBytes); //added unique_ptr instead of the lesson
     
     if (xmlState) {
-        forEachXmlChildElement(*xmlState, subChild);
+        forEachXmlChildElement(*xmlState, subChild){
+            mPresetManager->loadXmlForPreset(subChild);
+        }
     } else {
         jassertfalse;
     }
