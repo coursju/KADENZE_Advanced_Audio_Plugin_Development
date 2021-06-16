@@ -143,6 +143,7 @@
 		C7AD28B2A5BE4288795AA438 /* AudioUnit.framework */ /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		CA029AB90521DEC9C773760D /* CoreAudio.framework */ /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		CBE2F0780D3762CB38BA9D3E /* KAPParameterSlider.cpp */ /* KAPParameterSlider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KAPParameterSlider.cpp; path = ../../Source/KAPParameterSlider.cpp; sourceTree = SOURCE_ROOT; };
+		CC7C4FC391FE2F180226B550 /* KAPLookAndFeel.h */ /* KAPLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KAPLookAndFeel.h; path = ../../Source/KAPLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		CCE6040D08070265E2806A96 /* KAPCenterPanelMenuBar.cpp */ /* KAPCenterPanelMenuBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KAPCenterPanelMenuBar.cpp; path = ../../Source/KAPCenterPanelMenuBar.cpp; sourceTree = SOURCE_ROOT; };
 		D36E9991641CFD1CC58FE2B6 /* include_juce_audio_processors.mm */ /* include_juce_audio_processors.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_processors.mm; path = ../../JuceLibraryCode/include_juce_audio_processors.mm; sourceTree = SOURCE_ROOT; };
 		D3F6AED19D3537D1560889B6 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
@@ -343,6 +344,7 @@
 				ABB91CADB070A0AA524D6670,
 				34B85A2891B76B595E21A108,
 				DF50F148CADDFCE3D3871F29,
+				CC7C4FC391FE2F180226B550,
 				9C67F0A7A79EE56BC45A025C,
 			);
 			name = Helpers;
