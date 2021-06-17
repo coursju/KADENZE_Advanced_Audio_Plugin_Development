@@ -21,6 +21,12 @@ KadenzeAudioPluginAudioProcessorEditor::KadenzeAudioPluginAudioProcessorEditor (
     
     mMainPanel = new KAPMainPanel( &audioProcessor);
     addAndMakeVisible(mMainPanel);
+    
+    mLookAndFeel  = new KAPLookAndFeel();
+    setLookAndFeel(mLookAndFeel);
+    
+    LookAndFeel::setDefaultLookAndFeel(mLookAndFeel);
+    
 }
 
 KadenzeAudioPluginAudioProcessorEditor::~KadenzeAudioPluginAudioProcessorEditor()

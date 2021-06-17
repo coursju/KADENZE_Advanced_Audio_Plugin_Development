@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "KAPMainPanel.h"
+#include "KAPLookAndFeel.h"
 
 //==============================================================================
 /**
@@ -31,6 +32,7 @@ private:
     KadenzeAudioPluginAudioProcessor& audioProcessor;
     
     ScopedPointer<KAPMainPanel> mMainPanel;
+    KAPLookAndFeel* mLookAndFeel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KadenzeAudioPluginAudioProcessorEditor)
 };

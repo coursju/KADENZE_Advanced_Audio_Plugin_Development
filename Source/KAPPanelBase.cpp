@@ -22,7 +22,7 @@ KAPPanelBase::~KAPPanelBase()
 
 void KAPPanelBase::paint (Graphics& g)
 {
-    g.setColour(Colours::lightcoral);
+    g.setColour(Colours::white);
     g.fillAll();
     
     g.setColour(Colours::black);
