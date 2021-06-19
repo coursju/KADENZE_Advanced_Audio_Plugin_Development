@@ -21,6 +21,13 @@ const static double k2PI = 6.28318530718;
 
 const static int maxBufferDelaySize = 1920000; //19200; //2048
 
+static inline float dBToNormalizedGain (float inValue)
+{
+    float inValuedB = juce::Decibels::gainToDecibels(inValue + 0.00001f);
+    inValuedB = (inValuedB + 96.0f) / 96.0f;
+    
+    return inValuedB;
+}
 
 inline float kap_linear_interp(float v0, float v1, float t)
 {
