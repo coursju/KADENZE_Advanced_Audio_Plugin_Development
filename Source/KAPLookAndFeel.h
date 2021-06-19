@@ -49,9 +49,11 @@ public:
         Colour fillColour;
         
         if (isButtonDown) {
-            fillColour = KAPColour_5;
+            fillColour = KAPColour_6;
         } else if(isMouseOverButton){
             fillColour = KAPColour_3;
+        } else{
+            fillColour = KAPColour_5;
         }
         
         const float cornersize = 6.0f;

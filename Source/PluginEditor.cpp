@@ -27,6 +27,8 @@ KadenzeAudioPluginAudioProcessorEditor::KadenzeAudioPluginAudioProcessorEditor (
     
     LookAndFeel::setDefaultLookAndFeel(mLookAndFeel);
     
+    mBackgroundImage =
+    ImageCache::getFromMemory(BinaryData::kadenze_bg_png, BinaryData::kadenze_bg_pngSize);
 }
 
 KadenzeAudioPluginAudioProcessorEditor::~KadenzeAudioPluginAudioProcessorEditor()
@@ -36,12 +38,7 @@ KadenzeAudioPluginAudioProcessorEditor::~KadenzeAudioPluginAudioProcessorEditor(
 //==============================================================================
 void KadenzeAudioPluginAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    g.drawImage(mBackgroundImage, getLocalBounds().toFloat());
 }
 
 void KadenzeAudioPluginAudioProcessorEditor::resized()
