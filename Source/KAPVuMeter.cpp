@@ -10,6 +10,7 @@
 
 #include "KAPVuMeter.h"
 #include "KAPInterfaceDefines.h"
+#include "KAPParameters.h"
 
 KAPVuMeter::KAPVuMeter(KadenzeAudioPluginAudioProcessor* inProcessor)
 : mParameterID(-1),
@@ -52,7 +53,39 @@ void KAPVuMeter::paint(Graphics& g)
 
 void KAPVuMeter::timerCallback()
 {
+    float updatedCh0Level = 0.0f;
+    float updatedCh1Level = 0.0f;
     
+    switch (mParameterID) {
+        case kParameter_InputGain:
+            updatedCh0Level = 0.75f;
+            updatedCh1Level = 0.75f;
+            break;
+            
+        case kParameter_OutputGain:
+            updatedCh0Level = 0.35f;
+            updatedCh1Level = 0.35f;
+            break;
+            
+            if (updatedCh0Level > mCh0Level) {
+                mCh0Level = updatedCh0Level;
+            } else {
+                mCh0Level = kMeterSmoothingCoeff*(mCh0Level - updatedCh0Level) + updatedCh0Level;
+            }
+            
+            if (updatedCh1Level > mCh1Level) {
+                mCh1Level = updatedCh1Level;
+            } else {
+                mCh1Level = kMeterSmoothingCoeff*(mCh1Level - updatedCh1Level) + updatedCh1Level;
+            }
+            
+            mCh0Level = kap_denormalize(mCh0Level);
+            mCh1Level = kap_denormalize(mCh1Level);
+            
+            if (mCh0Level && mCh1Level) {
+                repaint();
+            }
+    }
 }
 
 void KAPVuMeter::setParameterID(int inParameterID)
