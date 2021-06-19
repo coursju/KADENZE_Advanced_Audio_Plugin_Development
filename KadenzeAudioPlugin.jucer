@@ -4,6 +4,10 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1">
   <MAINGROUP id="jTXAKs" name="KadenzeAudioPlugin">
+    <GROUP id="{1736A4D8-9690-23CC-F519-FF989EBD572F}" name="Components">
+      <FILE id="IlYsRY" name="KAPVuMeter.cpp" compile="1" resource="0" file="Source/KAPVuMeter.cpp"/>
+      <FILE id="hGnNkX" name="KAPVuMeter.h" compile="0" resource="0" file="Source/KAPVuMeter.h"/>
+    </GROUP>
     <GROUP id="{5E992E59-6978-5186-7DF1-F657B8590813}" name="Managers">
       <FILE id="dVduyf" name="KAPPresetManager.cpp" compile="1" resource="0"
             file="Source/KAPPresetManager.cpp"/>

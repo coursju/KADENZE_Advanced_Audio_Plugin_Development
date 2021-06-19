@@ -57,6 +57,7 @@
 		A4F3637B7B8D7535657E9A03 /* Shared Code */ = {isa = PBXBuildFile; fileRef = BFFE6B87E1042BC1DE521811; };
 		ADA970FEB16166F0E6BEF556 /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = B757312AFDA2C9F74FCB6D32; };
 		ADCF2F10CF8B4CA67343BE24 /* include_juce_audio_plugin_client_utils.cpp */ = {isa = PBXBuildFile; fileRef = 26C41AE9F892CB08427B2927; };
+		AE2AE09DF5C5AD632C569A19 /* KAPVuMeter.cpp */ = {isa = PBXBuildFile; fileRef = D85DF8B44C53CA67D393FD31; };
 		B408CEA885AD5F661EE7958A /* KAPCenterPanel.cpp */ = {isa = PBXBuildFile; fileRef = 282A685FCC8E8C479066B2EE; };
 		B79739C6D02151E7F0379AFC /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = BD1936003BAE6A4DC3956267; };
 		B89E2998EDDEC1C831299B64 /* AudioToolbox.framework */ = {isa = PBXBuildFile; fileRef = E56543D7AD3EFEEB045B0653; };
@@ -112,6 +113,7 @@
 		688672B5896ED55E59825554 /* PluginEditor.h */ /* PluginEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginEditor.h; path = ../../Source/PluginEditor.h; sourceTree = SOURCE_ROOT; };
 		6A0EF7CE83F099140C47CF21 /* AU */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KadenzeAudioPlugin.component; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A9082A66A19FA8EBA0777FA /* BinaryData.cpp */ /* BinaryData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = SOURCE_ROOT; };
+		7061128AAF36837D75471B96 /* KAPVuMeter.h */ /* KAPVuMeter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KAPVuMeter.h; path = ../../Source/KAPVuMeter.h; sourceTree = SOURCE_ROOT; };
 		72E9EACFCE1344F32E5A1EF9 /* juce_audio_devices */ /* juce_audio_devices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_devices; path = /Applications/JUCE/modules/juce_audio_devices; sourceTree = "<absolute>"; };
 		7435198972DB3D35FC2BA70B /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Applications/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		764C1A35936657504E4C9AF2 /* include_juce_audio_basics.mm */ /* include_juce_audio_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_basics.mm; path = ../../JuceLibraryCode/include_juce_audio_basics.mm; sourceTree = SOURCE_ROOT; };
@@ -156,6 +158,7 @@
 		D67CC5C6F1F2164C0B842DD7 /* include_juce_audio_plugin_client_VST_utils.mm */ /* include_juce_audio_plugin_client_VST_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_VST_utils.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_VST_utils.mm; sourceTree = SOURCE_ROOT; };
 		D6F1CF5A2414A4CC9D95BF54 /* KAPDelay.h */ /* KAPDelay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KAPDelay.h; path = ../../Source/KAPDelay.h; sourceTree = SOURCE_ROOT; };
 		D79E70E83F5AE6F3BB22963C /* IOKit.framework */ /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		D85DF8B44C53CA67D393FD31 /* KAPVuMeter.cpp */ /* KAPVuMeter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KAPVuMeter.cpp; path = ../../Source/KAPVuMeter.cpp; sourceTree = SOURCE_ROOT; };
 		DF4A80F5E98D6AE620628564 /* kadenze_bg.png */ /* kadenze_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kadenze_bg.png; path = ../../Assets/kadenze_bg.png; sourceTree = SOURCE_ROOT; };
 		DF50F148CADDFCE3D3871F29 /* KAPInterfaceDefines.h */ /* KAPInterfaceDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KAPInterfaceDefines.h; path = ../../Source/KAPInterfaceDefines.h; sourceTree = SOURCE_ROOT; };
 		E56543D7AD3EFEEB045B0653 /* AudioToolbox.framework */ /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -427,6 +430,7 @@
 		E9AB51B547BDF8E3C690A231 /* KadenzeAudioPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				F8E5EC304183BB7D7362C6EA,
 				DE13754A00CD30D8F27AE41A,
 				65AA63E8857698D06279DCB8,
 				350A6A51FF1EB52BCB3A8875,
@@ -436,6 +440,15 @@
 				CD38366C2B2F5DD360BF0F64,
 			);
 			name = KadenzeAudioPlugin;
+			sourceTree = "<group>";
+		};
+		F8E5EC304183BB7D7362C6EA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D85DF8B44C53CA67D393FD31,
+				7061128AAF36837D75471B96,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -711,6 +724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE2AE09DF5C5AD632C569A19,
 				3247E6EAA9BC97289890FF19,
 				31E7146338E09C016DECD559,
 				4B0A459879786662624F67A6,
